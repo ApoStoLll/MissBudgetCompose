@@ -17,7 +17,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.missclick.missbudgetcompose.R
 import com.missclick.missbudgetcompose.ui.screens.bills.BillsScreen
-import com.missclick.missbudgetcompose.ui.screens.category.CategoriesScreen
+import com.missclick.missbudgetcompose.ui.screens.categories.CategoriesScreen
 
 
 @Composable
