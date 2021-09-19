@@ -4,9 +4,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.missclick.missbudgetcompose.R
+import com.missclick.missbudgetcompose.domain.repositories.BillsRepository
 import com.missclick.missbudgetcompose.models.listdata.Bill
 
-class BillsViewModel : ViewModel() {
+class BillsViewModel(
+    private val billsRepository: BillsRepository
+) : ViewModel() {
 
     private val _viewState : MutableLiveData<BillState> = MutableLiveData(BillState.LoadingState)
     val viewState: LiveData<BillState> = _viewState

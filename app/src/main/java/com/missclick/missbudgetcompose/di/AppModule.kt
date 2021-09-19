@@ -13,7 +13,7 @@ val appModule = module{
     }
 
     viewModel {
-        BillsViewModel()
+        BillsViewModel(get())
     }
 
 
