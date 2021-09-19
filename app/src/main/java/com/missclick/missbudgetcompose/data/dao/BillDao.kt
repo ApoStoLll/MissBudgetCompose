@@ -1,9 +1,8 @@
-package com.missclick.missbudgetcompose.data.entities.dao
+package com.missclick.missbudgetcompose.data.dao
 
 import androidx.room.Dao
 import androidx.room.Query
 import com.missclick.missbudgetcompose.data.entities.BillEntity
-import com.missclick.missbudgetcompose.ui.bottomnav.NavigationItem
 
 @Dao
 interface BillDao {
