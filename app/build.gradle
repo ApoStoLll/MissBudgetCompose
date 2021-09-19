@@ -79,13 +79,13 @@ dependencies {
 // Koin Java Compatibility
     implementation "io.insert-koin:koin-android-compat:$koin_version"
 // Koin for Jetpack WorkManager
-    implementation "io.insert-koin:koin-androidx-workmanager:$koin_version"
+//    implementation "io.insert-koin:koin-androidx-workmanager:$koin_version"
 // Koin for Jetpack Compose
     implementation "io.insert-koin:koin-androidx-compose:$koin_version"
 
 
     //Room
-    def room_version = "2.3.0"
+    def room_version = "2.4.0-alpha03"
 
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"

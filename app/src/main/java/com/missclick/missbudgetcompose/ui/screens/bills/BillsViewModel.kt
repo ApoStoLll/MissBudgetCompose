@@ -8,14 +8,18 @@ import com.missclick.missbudgetcompose.models.listdata.Bill
 
 class BillsViewModel : ViewModel() {
 
-    private val _bills : MutableLiveData<List<Bill>> = MutableLiveData(listOf())
-    val bills: LiveData<List<Bill>> = _bills
+    private val _viewState : MutableLiveData<BillState> = MutableLiveData(BillState.LoadingState)
+    val viewState: LiveData<BillState> = _viewState
 
     fun updateList(){
         //TODO: Сделать через postValue, хз че не работает
-        _bills.postValue(listOf(
-            Bill(name = "Card", cash = "500 $", icon = R.drawable.ic_launcher_background),
-            Bill("Cash","300 $", icon = R.drawable.ic_launcher_foreground)
+        _viewState.postValue(
+            BillState.LoadedState(
+                listOf(
+                    Bill(name = "Card", cash = "500 $", icon = R.drawable.ic_launcher_background),
+                    Bill("Cash","300 $", icon = R.drawable.ic_launcher_foreground)
+                )
         ))
+
     }
 }
