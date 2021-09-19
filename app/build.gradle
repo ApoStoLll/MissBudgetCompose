@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'koin'
 }
 
 android {
@@ -69,4 +70,10 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
+
+
+    //koin
+    implementation "org.koin:koin-android:2.2.2"
+    implementation "org.koin:koin-androidx-viewmodel:2.2.2"
+
 }
