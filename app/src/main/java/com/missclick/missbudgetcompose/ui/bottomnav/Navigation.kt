@@ -1,6 +1,7 @@
 package com.missclick.missbudgetcompose.ui.bottomnav
 
 import android.util.Log
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
@@ -52,6 +53,7 @@ fun BottomNavigationBar(navController: NavController){
     }
 }
 
+@ExperimentalFoundationApi
 @Composable
 fun Navigation(navController: NavHostController) {
     NavHost(navController, startDestination = NavigationItem.Bills.route) {

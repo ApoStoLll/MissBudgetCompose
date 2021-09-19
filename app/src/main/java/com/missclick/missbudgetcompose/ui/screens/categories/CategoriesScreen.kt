@@ -35,15 +35,12 @@ fun CategoriesScreen(viewModel: CategoriesViewModel = CategoriesViewModel()){
     Scaffold(
         topBar = { Toolbar() }
     ) {
-
         Column {
             BillsList(bills = bills)
             ProgressBarCategories()
             CategoriesList(categories = categories)
         }
-
     }
-
 }
 
 @Composable

@@ -3,6 +3,7 @@ package com.missclick.missbudgetcompose
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
@@ -15,6 +16,7 @@ import com.missclick.missbudgetcompose.ui.bottomnav.NavigationItem
 import com.missclick.missbudgetcompose.ui.theme.MissBudgetComposeTheme
 
 class MainActivity : ComponentActivity() {
+    @ExperimentalFoundationApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
