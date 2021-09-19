@@ -1,6 +1,5 @@
 package com.missclick.missbudgetcompose.ui.screens.bills
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -14,13 +13,14 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.ViewModel
-import com.missclick.missbudgetcompose.data.listdata.Bill
+import com.missclick.missbudgetcompose.models.listdata.Bill
+import com.missclick.missbudgetcompose.ui.screens.categories.CategoriesViewModel
+import org.koin.androidx.compose.getViewModel
 
 
 @Composable
-fun BillsScreen(viewModel: BillsViewModel = BillsViewModel()){
-
+fun BillsScreen(){
+    val viewModel = getViewModel<BillsViewModel>()
     val bills : List<Bill> by viewModel.bills.observeAsState(listOf())
     viewModel.updateList()
 

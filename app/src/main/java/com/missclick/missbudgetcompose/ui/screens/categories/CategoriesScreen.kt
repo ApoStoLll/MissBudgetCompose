@@ -14,20 +14,19 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.scale
 
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.missclick.missbudgetcompose.data.listdata.Bill
-import com.missclick.missbudgetcompose.data.listdata.Category
+import com.missclick.missbudgetcompose.models.listdata.Bill
+import com.missclick.missbudgetcompose.models.listdata.Category
+import org.koin.androidx.compose.getViewModel
 
 
 @ExperimentalFoundationApi
 @Composable
-fun CategoriesScreen(viewModel: CategoriesViewModel = CategoriesViewModel()){
-
+fun CategoriesScreen(){
+    val viewModel = getViewModel<CategoriesViewModel>()
     val bills : List<Bill> by viewModel.bills.observeAsState(listOf())
     val categories : List<Category> by viewModel.categories.observeAsState(listOf())
     viewModel.updateList()

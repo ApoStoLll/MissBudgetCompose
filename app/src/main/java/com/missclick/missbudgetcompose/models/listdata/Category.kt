@@ -1,4 +1,4 @@
-package com.missclick.missbudgetcompose.data.listdata
+package com.missclick.missbudgetcompose.models.listdata
 
 import androidx.compose.ui.graphics.Color
 

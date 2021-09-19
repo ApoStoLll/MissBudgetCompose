@@ -1,33 +1,18 @@
 package com.missclick.missbudgetcompose.di
 
+import android.content.Context
+import androidx.room.Room
+import com.missclick.missbudgetcompose.data.BudgetDatabase
 import org.koin.dsl.module
 
 val dataModule = module {
-
-//    single {
-//        provideRepository(get())
-//    }
-//    single {
-//        provideRoomDb(get())
-//    }
-//    single {
-//        provideLocale(get())
-//    }
-
-
+    single {
+        provideRoomDb(get())
+    }
 }
 
-//
-//fun provideRepository(localStatistic : ILocalStatistic): IJust {
-//    return Just(localStatistic)
-//}
-//
-//fun provideLocale(statisticDB: StatisticDB) : ILocalStatistic {
-//    return LocalStatistic(statisticDB)
-//}
-//
-//fun provideRoomDb(context: Context) : StatisticDB {
-//    return Room.databaseBuilder(context, StatisticDB::class.java, "statistic")
-//        .fallbackToDestructiveMigration()
-//        .build()
-//}
+fun provideRoomDb(context: Context) : BudgetDatabase {
+    return Room.databaseBuilder(context, BudgetDatabase::class.java, "statistic")
+        .fallbackToDestructiveMigration()
+        .build()
+}
