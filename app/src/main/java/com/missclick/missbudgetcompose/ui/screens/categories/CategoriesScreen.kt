@@ -2,13 +2,12 @@ package com.missclick.missbudgetcompose.ui.screens.categories
 
 
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.*
-import androidx.compose.material.CircularProgressIndicator
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
@@ -16,10 +15,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.missclick.missbudgetcompose.models.listdata.Bill
 import com.missclick.missbudgetcompose.models.listdata.Category
+import com.missclick.missbudgetcompose.ui.screens.bills.BillsViewState
 import org.koin.androidx.compose.getViewModel
 
 
@@ -27,25 +28,55 @@ import org.koin.androidx.compose.getViewModel
 @Composable
 fun CategoriesScreen(){
     val viewModel = getViewModel<CategoriesViewModel>()
-    val bills : List<Bill> by viewModel.bills.observeAsState(listOf())
-    val categories : List<Category> by viewModel.categories.observeAsState(listOf())
-    viewModel.updateList()
+    val viewState : CategoriesViewState by viewModel.viewState.observeAsState(CategoriesViewState())
 
     Scaffold(
-        topBar = { Toolbar() }
+        topBar = {
+            Toolbar(isEditable = viewState.isEditable,
+                editModeOn = { viewModel.editModeOn() },
+                editModeOff = { viewModel.editModeOff() })
+        }
     ) {
         Column {
-            BillsList(bills = bills)
-            ProgressBarCategories()
-            CategoriesList(categories = categories)
+            if (!viewState.isLoaded){
+                Loading()
+                viewModel.update()
+            }
+            else{
+                BillsList(bills = viewState.bills)
+                ProgressBarCategories()
+                CategoriesList(categories = viewState.categories, isEditable = viewState.isEditable)
+            }
+
         }
     }
 }
 
 @Composable
-private fun Toolbar(){
+private fun Toolbar(isEditable: Boolean,editModeOn : () -> Unit, editModeOff: () -> Unit){
     TopAppBar(backgroundColor = Color.Black) {
-        Text(text = "testToolbar",color = Color.White)
+        Box(modifier = Modifier.fillMaxWidth()){
+            Text(text = "testToolbar",color = Color.White)
+            if(isEditable){
+                Button(onClick = editModeOff,modifier = Modifier.align(Alignment.CenterEnd)) {
+                    Text("Save", color = Color.White)
+                }
+            }
+            else{
+                Button(onClick = editModeOn,modifier = Modifier.align(Alignment.CenterEnd)) {
+                    Text("Edit", color = Color.White)
+                }
+            }
+        }
+
+
+    }
+}
+
+@Composable
+private fun Loading(){
+    Box(modifier = Modifier.fillMaxSize()){
+        CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
     }
 }
 
@@ -97,12 +128,20 @@ private fun ProgressBarCategories(){
 
 @ExperimentalFoundationApi
 @Composable
-private fun CategoriesList(categories: List<Category>) {
+private fun CategoriesList(categories: List<Category>, isEditable : Boolean) {
     LazyVerticalGrid(cells = GridCells.Fixed(4)) {
         items(categories) { category ->
             Column{
                 Text(text = category.name)
+                Image(painter = painterResource(category.icon), contentDescription = "contentDescr")
                 Text(text = category.cash)
+            }
+        }
+        item{
+            if(isEditable){
+                Box(modifier = Modifier.clickable(onClick = { println("addd") })) {
+                    Text(text = "Add")
+                }
             }
         }
     }

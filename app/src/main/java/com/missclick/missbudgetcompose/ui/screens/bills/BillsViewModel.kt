@@ -11,18 +11,25 @@ class BillsViewModel(
     private val billsRepository: BillsRepository
 ) : ViewModel() {
 
-    private val _viewState : MutableLiveData<BillState> = MutableLiveData(BillState.LoadingState)
-    val viewState: LiveData<BillState> = _viewState
+    private val _viewState : MutableLiveData<BillsViewState> = MutableLiveData(BillsViewState())
+    val viewState: LiveData<BillsViewState> = _viewState
 
     fun updateList(){
-        //TODO: Сделать через postValue, хз че не работает
         _viewState.postValue(
-            BillState.LoadedState(
-                listOf(
-                    Bill(name = "Card", cash = "500 $", icon = R.drawable.ic_launcher_background),
+                _viewState.value?.copy(bills = listOf(
+                    Bill(name = "Card", cash = "500 $", icon = R.drawable.ic_launcher_foreground),
                     Bill("Cash","300 $", icon = R.drawable.ic_launcher_foreground)
+                    ),
+                    isLoaded = true
                 )
-        ))
+        )
+    }
 
+    fun editModeOn(){
+        _viewState.postValue(_viewState.value?.copy(isEditable = true))
+    }
+
+    fun editModeOff(){
+        _viewState.postValue(_viewState.value?.copy(isEditable = false))
     }
 }
