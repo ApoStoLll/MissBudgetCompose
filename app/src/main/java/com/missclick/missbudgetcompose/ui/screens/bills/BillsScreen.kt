@@ -22,7 +22,6 @@ fun BillsScreen(){
 
     val viewState : BillsViewState by viewModel.viewState.observeAsState(BillsViewState())
 
-
     Scaffold(
         topBar = {
             Toolbar(isEditable = viewState.isEditable, editModeOn = { viewModel.editModeOn() },

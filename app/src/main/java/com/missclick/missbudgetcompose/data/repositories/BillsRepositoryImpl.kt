@@ -1,12 +1,13 @@
-package com.missclick.missbudgetcompose.domain.repositories
+package com.missclick.missbudgetcompose.data.repositories
 
+import com.missclick.missbudgetcompose.data.entities.BillEntity
 import com.missclick.missbudgetcompose.data.store.BillsDataSource
 
 class BillsRepositoryImpl(
-    private val dataSource: BillsDataSource
+    private val localDataSource: BillsDataSource
 ) : BillsRepository {
 
-    override fun getAllBills() {
+    override fun getAllBills(): List<BillEntity> {
         TODO("Not yet implemented")
     }
 

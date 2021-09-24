@@ -11,5 +11,11 @@ data class CategoriesEntity(
     @ColumnInfo(name = "name") val name : String?,
     @ColumnInfo(name = "icon") val icon : Int?,
     @ColumnInfo(name = "color") val color : String?,
-    //@ColumnInfo(name = "") val  : String? Доход / расход
+    @ColumnInfo(name = "categoryType") val categoryType : CategoryType? //Доход / расход
     )
+
+enum class CategoryType(val id: Int) {
+    Income(1),
+    Expense(-1),
+    Undefined(-100)
+}

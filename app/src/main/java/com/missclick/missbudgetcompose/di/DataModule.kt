@@ -5,8 +5,8 @@ import androidx.room.Room
 import com.missclick.missbudgetcompose.data.BudgetDatabase
 import com.missclick.missbudgetcompose.data.store.BillsDataSource
 import com.missclick.missbudgetcompose.data.store.BillsDataSourceImpl
-import com.missclick.missbudgetcompose.domain.repositories.BillsRepository
-import com.missclick.missbudgetcompose.domain.repositories.BillsRepositoryImpl
+import com.missclick.missbudgetcompose.data.repositories.BillsRepository
+import com.missclick.missbudgetcompose.data.repositories.BillsRepositoryImpl
 import org.koin.dsl.module
 
 val dataModule = module {

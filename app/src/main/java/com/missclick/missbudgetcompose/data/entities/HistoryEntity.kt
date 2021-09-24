@@ -13,5 +13,12 @@ data class HistoryEntity(
     @ColumnInfo(name = "cash") val cash : Int?,
     @ColumnInfo(name = "note") val note : String?,
     @ColumnInfo(name = "bill") val bill : Int?,
-    // @ColumnInfo(name = "type") val type : String? (трата, доход, перевод)
+    @ColumnInfo(name = "type") val cashMove : CashMove? //(трата, доход, перевод)
     )
+
+enum class CashMove(val id: Int) {
+    Income(1),
+    Expense(-1),
+    Transfer(0),
+    Undefined(-100)
+}

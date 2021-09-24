@@ -4,7 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.missclick.missbudgetcompose.R
-import com.missclick.missbudgetcompose.domain.repositories.BillsRepository
+
+import com.missclick.missbudgetcompose.data.repositories.BillsRepository
 import com.missclick.missbudgetcompose.models.listdata.Bill
 
 class BillsViewModel(
@@ -24,6 +25,8 @@ class BillsViewModel(
                 )
         )
     }
+
+
 
     fun editModeOn(){
         _viewState.postValue(_viewState.value?.copy(isEditable = true))
