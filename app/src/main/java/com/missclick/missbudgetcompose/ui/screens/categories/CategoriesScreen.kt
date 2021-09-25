@@ -18,9 +18,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.missclick.missbudgetcompose.models.listdata.Bill
-import com.missclick.missbudgetcompose.models.listdata.Category
-import com.missclick.missbudgetcompose.ui.screens.bills.BillsViewState
+import com.missclick.missbudgetcompose.ui.uimodels.listdata.Bill
+import com.missclick.missbudgetcompose.ui.uimodels.listdata.Category
 import org.koin.androidx.compose.getViewModel
 
 

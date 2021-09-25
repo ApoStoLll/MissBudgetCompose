@@ -1,15 +1,18 @@
 package com.missclick.missbudgetcompose.ui.screens.bills
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.missclick.missbudgetcompose.R
 
-import com.missclick.missbudgetcompose.data.repositories.BillsRepository
-import com.missclick.missbudgetcompose.models.listdata.Bill
+import com.missclick.missbudgetcompose.domain.bills.FetchBillsUseCase
+import com.missclick.missbudgetcompose.ui.uimodels.listdata.Bill
+import kotlinx.coroutines.launch
 
 class BillsViewModel(
-    private val billsRepository: BillsRepository
+    private val fetchBillsUseCase: FetchBillsUseCase
 ) : ViewModel() {
 
     private val _viewState : MutableLiveData<BillsViewState> = MutableLiveData(BillsViewState())
@@ -26,7 +29,16 @@ class BillsViewModel(
         )
     }
 
-
+    fun testUseCase(){
+        viewModelScope.launch {
+            val result = fetchBillsUseCase.run(params = Unit)
+            result.fold(failed = { exception ->
+                Log.e("BillsViewModel", exception.toString())
+            }, succeeded = { response ->
+                Log.e("BillsViewModel", response.toString())
+            })
+        }
+    }
 
     fun editModeOn(){
         _viewState.postValue(_viewState.value?.copy(isEditable = true))

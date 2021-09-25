@@ -1,7 +1,7 @@
 package com.missclick.missbudgetcompose.ui.screens.categories
 
-import com.missclick.missbudgetcompose.models.listdata.Bill
-import com.missclick.missbudgetcompose.models.listdata.Category
+import com.missclick.missbudgetcompose.ui.uimodels.listdata.Bill
+import com.missclick.missbudgetcompose.ui.uimodels.listdata.Category
 
 data class CategoriesViewState(
     var isEditable : Boolean = false,

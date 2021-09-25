@@ -4,9 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.missclick.missbudgetcompose.R
-import com.missclick.missbudgetcompose.models.listdata.Bill
-import com.missclick.missbudgetcompose.models.listdata.Category
+
 import com.missclick.missbudgetcompose.ui.screens.bills.BillsViewState
+import com.missclick.missbudgetcompose.ui.uimodels.listdata.Bill
+import com.missclick.missbudgetcompose.ui.uimodels.listdata.Category
 
 class CategoriesViewModel : ViewModel() {
 

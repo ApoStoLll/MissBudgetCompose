@@ -12,7 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.missclick.missbudgetcompose.models.listdata.Bill
+import com.missclick.missbudgetcompose.ui.uimodels.listdata.Bill
 import org.koin.androidx.compose.getViewModel
 
 
@@ -21,6 +21,7 @@ fun BillsScreen(){
     val viewModel = getViewModel<BillsViewModel>()
 
     val viewState : BillsViewState by viewModel.viewState.observeAsState(BillsViewState())
+    viewModel.testUseCase()
 
     Scaffold(
         topBar = {

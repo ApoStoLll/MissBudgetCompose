@@ -11,10 +11,11 @@ sealed class Either<out F, out S> {
             is Failure -> failed(failure)
             is Success -> succeeded(success)
         }
+    data class Failure<out F>(val failure: F) : Either<F, Nothing>()
+    data class Success<out S>(val success: S) : Either<Nothing, S>()
 }
 
-data class Failure<out F>(val failure: F) : Either<F, Nothing>()
-data class Success<out S>(val success: S) : Either<Nothing, S>()
+
 
 /**
  * Allows chaining of multiple calls taking as argument the [success][Success.success] value of the previous call and
@@ -33,7 +34,7 @@ data class Success<out S>(val success: S) : Either<Nothing, S>()
  * value will be then passed as the input parameter.
  */
 inline fun <F, S1, S2> Either<F, S1>.flatMap(succeeded: (S1) -> Either<F, S2>): Either<F, S2> =
-    fold({ this as Failure }, succeeded)
+    fold({ this as Either.Failure }, succeeded)
 
 /**
  * Map the [Success] value of the [Either] to another value.
@@ -46,4 +47,4 @@ inline fun <F, S1, S2> Either<F, S1>.flatMap(succeeded: (S1) -> Either<F, S2>): 
  * ```
  */
 inline fun <F, S1, S2> Either<F, S1>.map(f: (S1) -> S2): Either<F, S2> =
-    flatMap { Success(f(it)) }
+    flatMap { Either.Success(f(it)) }
