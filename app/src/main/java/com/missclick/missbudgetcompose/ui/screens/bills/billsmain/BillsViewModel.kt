@@ -1,4 +1,4 @@
-package com.missclick.missbudgetcompose.ui.screens.bills
+package com.missclick.missbudgetcompose.ui.screens.bills.billsmain
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

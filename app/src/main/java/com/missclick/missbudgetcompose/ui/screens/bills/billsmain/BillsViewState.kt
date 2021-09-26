@@ -1,4 +1,4 @@
-package com.missclick.missbudgetcompose.ui.screens.bills
+package com.missclick.missbudgetcompose.ui.screens.bills.billsmain
 
 import com.missclick.missbudgetcompose.models.listdata.Bill
 

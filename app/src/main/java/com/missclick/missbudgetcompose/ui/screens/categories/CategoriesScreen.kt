@@ -20,7 +20,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.missclick.missbudgetcompose.models.listdata.Bill
 import com.missclick.missbudgetcompose.models.listdata.Category
-import com.missclick.missbudgetcompose.ui.screens.bills.BillsViewState
 import org.koin.androidx.compose.getViewModel
 
 

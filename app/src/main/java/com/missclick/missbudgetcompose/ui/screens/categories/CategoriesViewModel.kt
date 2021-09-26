@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import com.missclick.missbudgetcompose.R
 import com.missclick.missbudgetcompose.models.listdata.Bill
 import com.missclick.missbudgetcompose.models.listdata.Category
-import com.missclick.missbudgetcompose.ui.screens.bills.BillsViewState
 
 class CategoriesViewModel : ViewModel() {
 

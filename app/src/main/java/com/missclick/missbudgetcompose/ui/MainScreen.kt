@@ -1,25 +1,47 @@
-package com.missclick.missbudgetcompose.ui.bottomnav
+package com.missclick.missbudgetcompose.ui.mainscreen
 
 import android.util.Log
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.material.BottomNavigation
-import androidx.compose.material.BottomNavigationItem
-import androidx.compose.material.Icon
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavController
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
 import com.missclick.missbudgetcompose.R
-import com.missclick.missbudgetcompose.ui.screens.bills.BillsScreen
+import com.missclick.missbudgetcompose.ui.navigation.NavigationItem
+import com.missclick.missbudgetcompose.ui.navigation.Router
+import com.missclick.missbudgetcompose.ui.screens.bills.BillsContainer
 import com.missclick.missbudgetcompose.ui.screens.categories.CategoriesScreen
+import com.missclick.missbudgetcompose.ui.screens.history.HistoryScreen
 
+@ExperimentalAnimationApi
+@ExperimentalFoundationApi
+@Composable
+fun MainScreen(router: Router){
+
+    val navController = rememberNavController()
+    Scaffold(bottomBar = { BottomNavigationBar(navController = navController) }) {
+        NavHost(navController, startDestination = NavigationItem.Bills.route) {
+            composable(NavigationItem.Bills.route) {
+                BillsContainer(externalRouter = router)
+            }
+            composable(NavigationItem.Categories.route) {
+                CategoriesScreen()
+            }
+            composable(NavigationItem.History.route) {
+                HistoryScreen()
+            }
+        }
+    }
+
+}
 
 @Composable
 fun BottomNavigationBar(navController: NavController){
@@ -49,22 +71,6 @@ fun BottomNavigationBar(navController: NavController){
                     }
                 }
             )
-        }
-    }
-}
-
-@ExperimentalFoundationApi
-@Composable
-fun Navigation(navController: NavHostController) {
-    NavHost(navController, startDestination = NavigationItem.Bills.route) {
-        composable(NavigationItem.Bills.route) {
-            BillsScreen()
-        }
-        composable(NavigationItem.Categories.route) {
-            CategoriesScreen()
-        }
-        composable(NavigationItem.History.route) {
-            //BillsScreen()
         }
     }
 }
