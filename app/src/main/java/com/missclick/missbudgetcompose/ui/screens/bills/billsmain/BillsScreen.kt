@@ -14,9 +14,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.missclick.missbudgetcompose.models.listdata.Bill
+
 import com.missclick.missbudgetcompose.ui.navigation.NavigationItem
 import com.missclick.missbudgetcompose.ui.navigation.Router
+import com.missclick.missbudgetcompose.ui.uimodels.listdata.Bill
 import org.koin.androidx.compose.getViewModel
 
 
