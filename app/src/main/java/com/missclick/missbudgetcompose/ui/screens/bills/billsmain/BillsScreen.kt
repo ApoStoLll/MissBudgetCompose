@@ -25,6 +25,7 @@ fun BillsScreen(router: Router?, navController: NavController){
     val viewModel = getViewModel<BillsViewModel>()
 
     val viewState : BillsViewState by viewModel.viewState.observeAsState(BillsViewState())
+    viewModel.testUseCase()
 
     Scaffold(
         topBar = {

@@ -1,6 +1,6 @@
 package com.missclick.missbudgetcompose.ui.screens.bills.billsmain
 
-import com.missclick.missbudgetcompose.models.listdata.Bill
+import com.missclick.missbudgetcompose.ui.uimodels.listdata.Bill
 
 //sealed class BillState{
 //    object LoadingState : BillState()
